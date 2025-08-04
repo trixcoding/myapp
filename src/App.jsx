@@ -5,7 +5,7 @@ function App() {
   return (
      <div>
   <h6 className = "text-3xl font-bold underline text-blue-600">Mhmdnsr</h6>
-     <Button className= "text-red-600 bg-black-400"/>
+     <Button />
      </div>
   )
 }
