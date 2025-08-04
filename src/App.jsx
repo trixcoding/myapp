@@ -9,7 +9,7 @@ const handleClick = () => {
   };
 function App() {
   return (
-       <BrowserRouter>
+       
      <div>
     <CustomBtn onClick={handleClick} variant="primary">Set</CustomBtn>
       <CustomBtn onClick={handleClick} variant="danger">Delete</CustomBtn>
@@ -19,21 +19,9 @@ function App() {
 
          
     
-      <nav style={{ marginBottom: '1rem' }}>
-        <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-        <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
-      </nav>
-
-   
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-
-        
-      </Routes>
+      
  
      </div>
-       </BrowserRouter>
   )
 }
 
