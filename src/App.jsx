@@ -16,7 +16,7 @@ function About() {
 }
 
 function Shop(){
-<StylishInput />
+return <StylishInput />;
 }
 
 function App() {
