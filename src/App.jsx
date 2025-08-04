@@ -17,18 +17,18 @@ function App() {
          <StylishInput />
 
          
-      {/* منو */}
+    
       <nav style={{ marginBottom: '1rem' }}>
         <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
         <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
       </nav>
 
-      {/* مسیرها */}
+   
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
-          } />
+           />
       </Routes>
  
      </div>
