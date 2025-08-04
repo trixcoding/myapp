@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import './index.css'
 import './output.css'
 import CustomBtn from './CustomBtn'
@@ -9,6 +9,7 @@ const handleClick = () => {
   };
 function App() {
   return (
+       <BrowserRouter>
      <div>
     <CustomBtn onClick={handleClick} variant="primary">Set</CustomBtn>
       <CustomBtn onClick={handleClick} variant="danger">Delete</CustomBtn>
@@ -32,6 +33,7 @@ function App() {
       </Routes>
  
      </div>
+       </BrowserRouter>
   )
 }
 
