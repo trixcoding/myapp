@@ -8,9 +8,9 @@ function App() {
 
   return (
     <>
-      <div>
+    <div>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://cdn.tailwindcss.com"/>
+  <script src="https://cdn.tailwindcss.com"/></script>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -20,7 +20,7 @@ function App() {
       </div>
       <h1 className = "text-3xl font-bold underline text-blue-600">Mhmdnsr</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 3)}>
+        <button onClick={() => setCount((count) => count + 6)}>
           count is {count}
         </button>
         <p>
