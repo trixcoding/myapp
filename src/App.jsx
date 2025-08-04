@@ -16,7 +16,7 @@ function About() {
 }
 
 function Shop(){
-return <h1>Shop</h1>
+<StylishInput />
 }
 
 function App() {
