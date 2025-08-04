@@ -5,7 +5,7 @@ function Login() {
     <div>
      <StylishInput />
       <StylishInput />
-      <CustomBtn />
+      <CustomBtn onClick={handleClick} variant="primary"/>
       
     </div>
     );
