@@ -1,10 +1,10 @@
 import "./index.css"
-function MyButton() {
+function Button() {
   return (
     <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      کلیک کن
+  Click  
     </button>
   );
 }
 
-export default MyButton;
+export default Button;
