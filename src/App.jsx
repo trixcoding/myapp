@@ -7,9 +7,9 @@ const handleClick = () => {
 function App() {
   return (
      <div>
-    <Button onClick={handleClick} variant="primary">ثبت</Button>
-      <Button onClick={handleClick} variant="danger">حذف</Button>
-      <Button onClick={handleClick} variant="outline">انصراف</Button>
+    <CustomBtn onClick={handleClick} variant="primary">Set</CustomBtn>
+      <CustomBtn onClick={handleClick} variant="danger">Delete</CustomBtn>
+      <CustomBtn onClick={handleClick} variant="outline">Cancel</CustomBtn>
     
      </div>
   )
