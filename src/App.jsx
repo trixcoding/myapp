@@ -4,6 +4,7 @@ import CustomBtn from './CustomBtn'
 import StylishInput from './StylishInput'
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import ProductCard from './ProductCard'
 const handleClick = () => {
     return ;
   };
@@ -34,6 +35,7 @@ function App() {
              <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
       </Routes>
+     <ProductCard />
     </BrowserRouter>
  
       
