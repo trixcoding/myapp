@@ -2,18 +2,35 @@ import './index.css'
 import './output.css'
 import CustomBtn from './CustomBtn'
 import StylishInput from './StylishInput'
+import React from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 const handleClick = () => {
     return ;
   };
+function Home() {
+  return <h2>خانه</h2>;
+}
+
+function About() {
+  return <h2>درباره ما</h2>;
+}
+
 function App() {
   return (
-      <div>
-      <CustomBtn onClick={handleClick} variant="primary">Set</CustomBtn>
-      <CustomBtn onClick={handleClick} variant="danger">Delete</CustomBtn>
-      <CustomBtn onClick={handleClick} variant="outline">Cancel</CustomBtn>
-      <StylishInput />
-      <StylishInput />
-      </div>
+    
+
+
+ <BrowserRouter>
+      <nav>
+        <Link to="/">خانه</Link> | <Link to="/about">درباره ما</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+ 
+      
   )
 }
 
