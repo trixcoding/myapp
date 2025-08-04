@@ -15,6 +15,10 @@ function About() {
   return <h2>درباره ما</h2>;
 }
 
+function Shop(){
+return <h1>Shop</h1>
+}
+
 function App() {
   return (
     
@@ -23,9 +27,11 @@ function App() {
  <BrowserRouter>
       <nav>
         <Link to="/">خانه</Link> | <Link to="/about">درباره ما</Link>
+          <Link to="/shop">shop</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
+             <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
