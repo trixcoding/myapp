@@ -8,7 +8,7 @@ const ProductCard = () => {
       <div className="relative">
         <img
           className="w-full h-64 object-cover"
-          src="https://images.unsplash.com/photo-1600185365483-26d7c6c8c2a0"
+          src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
           alt="Product"
         />
         {/* برچسب "جدید" */}
