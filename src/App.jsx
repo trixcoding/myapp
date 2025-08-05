@@ -1,42 +1,40 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true); // برای نمایش وضعیت
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://202.133.88.146:3001/api/users')
+    // وقتی کامپوننت لود شد، لیست کاربران رو از سرور می‌گیریم
+    fetch('http://localhost:3001/api/users')
       .then(res => {
         if (!res.ok) throw new Error('خطا در دریافت کاربران');
         return res.json();
       })
       .then(data => {
-        alert("✅ کاربران دریافتی:", data); // لاگ برای بررسی
         setUsers(data);
         setLoading(false);
       })
       .catch(err => {
-        alert('❌ خطا:', err);
+        setError(err.message);
         setLoading(false);
       });
   }, []);
 
+  if (loading) return <div>در حال بارگذاری...</div>;
+  if (error) return <div>خطا: {error}</div>;
+
   return (
     <div>
       <h1>لیست کاربران</h1>
-      {loading ? (
-        <p>در حال بارگذاری...</p>
-      ) : users.length === 0 ? (
-        <p>هیچ کاربری وجود ندارد</p>
-      ) : (
-        <ul>
-          {users.map(user => (
-            <li key={user.id}>
-              آیدی: {user.id} - یوزرنیم: {user.username}
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>
+            {user.username} (ID: {user.id})
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
