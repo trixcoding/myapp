@@ -54,7 +54,6 @@ function App() {
              <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
       </Routes>
-     <ProductCard />
     </BrowserRouter>
  
       
