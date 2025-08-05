@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     // وقتی کامپوننت لود شد، لیست کاربران رو از سرور می‌گیریم
-    fetch('http://localhost:3001/api/users')
+    fetch('202.133.88.146:3001/api/users')
       .then(res => {
         if (!res.ok) throw new Error('خطا در دریافت کاربران');
         return res.json();
