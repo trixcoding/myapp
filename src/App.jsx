@@ -1,66 +1,67 @@
-// myapp/src/App.jsx
-
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [users, setUsers] = useState([]);
   const [form, setForm] = useState({ username: '', password: '' });
 
   const fetchUsers = async () => {
-    try {
-      const res = await fetch('http://202.133.88.146:3001/api/users');
-      const data = await res.json();
-      setUsers(data);
-    } catch (err) {
-      console.error('❌ خطا در گرفتن کاربران:', err);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    alert(form);
-    e.preventDefault();
-    if (!form.username || !form.password) return;
-    try {
-      const res = await fetch('http://202.133.88.146:3001/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      await res.json();
-      setForm({ username: '', password: '' });
-      fetchUsers(); // بروز رسانی لیست
-    } catch (err) {
-      console.error('❌ خطا در ثبت کاربر:', err);
-    }
+    const res = await fetch('http://202.133.88.146:3001/api/users');
+    const data = await res.json();
+    setUsers(data);
   };
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
-  return (
-    <div>
-      <h1>لیست کاربران</h1>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.username || !form.password) return;
 
+    const res = await fetch('http://202.133.88.146:3001/api/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) {
+      setForm({ username: '', password: '' });
+      fetchUsers();
+    } else {
+      alert('خطا در ثبت کاربر');
+    }
+  };
+
+  return (
+    <div style={{ maxWidth: 400, margin: 'auto', fontFamily: 'Tahoma, sans-serif' }}>
+      <h2>ثبت کاربر جدید</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="نام کاربری"
           value={form.username}
           onChange={(e) => setForm({ ...form, username: e.target.value })}
+          required
+          style={{ width: '100%', marginBottom: 10, padding: 8 }}
         />
         <input
           type="password"
           placeholder="رمز عبور"
           value={form.password}
           onChange={(e) => setForm({ ...form, password: e.target.value })}
+          required
+          style={{ width: '100%', marginBottom: 10, padding: 8 }}
         />
-        <button type="submit">افزودن</button>
+        <button type="submit" style={{ width: '100%', padding: 10 }}>افزودن</button>
       </form>
 
+      <h3>لیست کاربران</h3>
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>🧑 {user.username}</li>
+        {users.map(user => (
+          <li key={user.id}>
+            <b>نام کاربری:</b> {user.username} <br />
+            <b>پسورد هش شده:</b> {user.password}
+          </li>
         ))}
       </ul>
     </div>
