@@ -8,7 +8,7 @@ function App() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/users');
+      const res = await fetch('http://202.133.88.146:3001/api/users');
       const data = await res.json();
       setUsers(data);
     } catch (err) {
@@ -17,10 +17,11 @@ function App() {
   };
 
   const handleSubmit = async (e) => {
+    alert(form);
     e.preventDefault();
     if (!form.username || !form.password) return;
     try {
-      const res = await fetch('http://202.133.88.146:3001:3001/api/users', {
+      const res = await fetch('http://202.133.88.146:3001/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
