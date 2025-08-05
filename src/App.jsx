@@ -5,6 +5,7 @@ import StylishInput from './StylishInput'
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import ProductCard from './ProductCard'
+import React, { useState, useEffect } from 'react';
 const handleClick = () => {
     return ;
   };
@@ -13,10 +14,16 @@ function Home() {
 }
 
 function About() {
-    fetch('202.133.88.146:5000/api')
-  .then(res => res.json())
-  .then(data => x = data);
-  return <h2>{x}</h2>;
+
+const [message, setMessage] = useState('');
+
+    useEffect(() => {
+    fetch('http://202.133.88.146:5000/api')
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+      .catch(error => console.error('Error:', error));
+  }, []);
+  return <h2>{message}</h2>;
     
 }
 
