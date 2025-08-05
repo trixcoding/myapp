@@ -2,7 +2,6 @@ import './index.css'
 import './output.css'
 import CustomBtn from './CustomBtn'
 import StylishInput from './StylishInput'
-import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import ProductCard from './ProductCard'
 import React, { useState, useEffect } from 'react';
