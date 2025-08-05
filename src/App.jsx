@@ -6,7 +6,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/user/1')  // فرض کردیم id=1
+    fetch('http://202.133.88.146:3001/api/user/1')  // فرض کردیم id=1
       .then(res => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json();
