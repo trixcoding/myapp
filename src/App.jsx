@@ -29,7 +29,7 @@ function About() {
   return (
     <div>
       <h2>پیامی از سرور:</h2>
-      <p>{message}</p>
+      <p className = "text-bg-700 text-xl">{message}</p>
     </div>
   );
 };
