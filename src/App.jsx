@@ -1,34 +1,54 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [form, setForm] = useState({ username: '', password: '' });
+
+  // دریافت کاربران از سرور
+  const fetchUsers = async () => {
+    const res = await axios.get('http://localhost:5000/api/users');
+    setUsers(res.data);
+  };
+
+  // ارسال فرم برای ساخت کاربر
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post('http://localhost:5000/api/users', form);
+    setForm({ username: '', password: '' });
+    fetchUsers();
+  };
 
   useEffect(() => {
-    fetch('http://202.133.88.146:3001/api/user/1')  // فرض کردیم id=1
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(data => {
-        setUser(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
+    fetchUsers();
   }, []);
 
-  if (loading) return <div>در حال بارگذاری...</div>;
-  if (error) return <div>خطا: {error}</div>;
-
   return (
-    <div>
-      <h1>اطلاعات کاربر</h1>
-      <p>نام کاربری: {user.username}</p>
-      <p>پسورد: {user.password}</p>
+    <div style={{ padding: 20 }}>
+      <h2>ثبت‌نام کاربر</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="نام کاربری"
+          value={form.username}
+          onChange={(e) => setForm({ ...form, username: e.target.value })}
+        />
+        <input
+          placeholder="رمز عبور"
+          type="password"
+          value={form.password}
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        />
+        <button type="submit">افزودن</button>
+      </form>
+
+      <h3>لیست کاربران:</h3>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.username} - {user.password}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
