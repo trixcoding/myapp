@@ -13,7 +13,11 @@ function Home() {
 }
 
 function About() {
-  return <h2>درباره ما</h2>;
+    fetch('http://<VPS_IP>:5000/api')
+  .then(res => res.json())
+  .then(data => let x = data);
+  return <h2>{x}</h2>;
+    
 }
 
 function Shop(){
