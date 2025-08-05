@@ -14,17 +14,26 @@ function Home() {
 
 function About() {
 
-const [message, setMessage] = useState('');
+  // ایجاد state برای نگهداری متن
+  const [message, setMessage] = useState('');
 
-    useEffect(() => {
-    fetch('http://202.133.88.146:5000/api')
-      .then(response => response.json())
-      .then(data => setMessage(data.message))
-      .catch(error => alert('Error:', error));
-  }, []);
-  return <h2>{message}</h2>;
+  // وقتی کامپوننت بارگذاری شد، درخواست به سرور بفرست
+  useEffect(() => {
+    // گرفتن داده از سرور
+    fetch('http://202.133.88.146:5000/api/message')
+      .then(response => response.json())  // تبدیل پاسخ به JSON
+      .then(data => setMessage(data.message))  // قرار دادن پیام در state
+      .catch(error => alert('خطا در دریافت پیام:', error));
+  }, []); // فقط یک‌بار پس از بارگذاری اجرا می‌شود
+
+  return (
+    <div>
+      <h2>پیامی از سرور:</h2>
+      <p>{message}</p>
+    </div>
+  );
+};
     
-}
 
 function Shop(){
 return <StylishInput />;
