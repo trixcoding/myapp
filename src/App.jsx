@@ -13,7 +13,7 @@ function Home() {
 }
 
 function About() {
-    fetch('http://<VPS_IP>:5000/api')
+    fetch('http://202.133.88.146:5000/api')
   .then(res => res.json())
   .then(data => let x = data);
   return <h2>{x}</h2>;
