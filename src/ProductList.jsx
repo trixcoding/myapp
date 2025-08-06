@@ -24,7 +24,7 @@ export default function ProductList() {
     <div className="max-w-7xl mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {products.map(product => (
         <div key={product.id} className="border rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
-         <Link to={`/product/${product.id}`}
+         <Link to={`/product/${product.id}`}>
           <img 
             src={product.image} 
             alt={product.name} 
@@ -36,6 +36,7 @@ export default function ProductList() {
           <button className="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition mt-4">
             خرید
           </button>
+           </Link>
         </div>
       ))}
     </div>
