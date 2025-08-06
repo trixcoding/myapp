@@ -11,7 +11,7 @@ export default function Profile() {
     const userEmail = localStorage.getItem('email');
 
     if (!token || !userEmail) {
-      navigate('/login'); // اگه توکن نباشه بره به صفحه لاگین
+      navigate('/'); // اگه توکن نباشه بره به صفحه لاگین
     } else {
       setEmail(userEmail); // ایمیل رو نمایش بده
     }
@@ -21,7 +21,7 @@ export default function Profile() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
-    navigate('/login');
+    navigate('/');
   };
 
   return (
