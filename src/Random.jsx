@@ -23,6 +23,7 @@ export default function Random() {
       const res = await fetch('http://202.133.88.146:3001/api/random');
       const data = await res.json();
       animateTyping(data.randomString);
+      toast.success(" ساخته شد  ‌");
     } catch (error) {
       setDisplayedText('❌ خطا در دریافت رشته رندوم');
       setIsTyping(false);
