@@ -9,6 +9,8 @@ import ProductList from './ProductList';
 function App() {
   return (
     <BrowserRouter>
+          <div className="min-h-screen flex flex-col justify-between">
+          <main className="flex-grow">
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/signup" element={<SignUp />} />
@@ -16,15 +18,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-
-      <ToastContainer 
-        position="top-center" 
-        autoClose={3000} 
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-        theme="colored"
-      />
+       </main>
+        <Footer />
+      </div>
     </BrowserRouter>
        
       
