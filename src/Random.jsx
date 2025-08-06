@@ -16,7 +16,7 @@ export default function RandomString() {
     try {
       setDisplayedText('');
       setIsTyping(true);
-      const res = await fetch('http://localhost:3001/api/random');
+      const res = await fetch('http://202.133.88.146:3001/api/random');
       const data = await res.json();
       animateTyping(data.randomString);
     } catch (error) {
