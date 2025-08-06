@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 export default function ProductFilter() {
-  const [products, setProducts] = useState([]); // همه محصولات
-  const [selectedCategory, setSelectedCategory] = useState('all'); // دسته انتخاب شده
+  const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  // بارگذاری محصولات از API یا سرور (مثلاً API ما)
   useEffect(() => {
     async function fetchProducts() {
       const res = await fetch('http://202.133.88.146:3001/api/products');
@@ -14,36 +13,55 @@ export default function ProductFilter() {
     fetchProducts();
   }, []);
 
-  // فیلتر کردن محصولات بر اساس دسته انتخاب شده
   const filteredProducts = selectedCategory === 'all'
     ? products
     : products.filter(product => product.category === selectedCategory);
 
   return (
-    <div>
-      <h2>دسته‌بندی محصولات</h2>
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <h2 className="text-3xl font-extrabold text-gray-900 mb-6 text-center">
+        دسته‌بندی محصولات
+      </h2>
 
-      <select
-        value={selectedCategory}
-        onChange={(e) => setSelectedCategory(e.target.value)}
-        className="border rounded p-2 mb-4"
-      >
-        <option value="all">همه محصولات</option>
-        <option value="shoes">کفش</option>
-        <option value="tshirts">تیشرت</option>
-        <option value="pants">شلوار</option>
-        <option value="glasses">عینک</option>
-        <option value="hats">کلاه</option>
-      </select>
+      <div className="flex justify-center mb-8">
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className="border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        >
+          <option value="all">همه محصولات</option>
+          <option value="shoes">کفش</option>
+          <option value="tshirts">تیشرت</option>
+          <option value="pants">شلوار</option>
+          <option value="glasses">عینک</option>
+          <option value="hats">کلاه</option>
+        </select>
+      </div>
 
-      <div className="grid grid-cols-3 gap-4">
-        {filteredProducts.map(product => (
-          <div key={product.id} className="border p-4 rounded shadow">
-            <img src={product.image} alt={product.name} className="w-full h-40 object-cover" />
-            <h3 className="font-bold mt-2">{product.name}</h3>
-            <p>{product.price} تومان</p>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredProducts.length === 0 ? (
+          <p className="text-center text-gray-500 col-span-full">
+            محصولی در این دسته‌بندی موجود نیست.
+          </p>
+        ) : (
+          filteredProducts.map(product => (
+            <div
+              key={product.id}
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src={product.image || 'https://via.placeholder.com/300x200?text=No+Image'}
+                alt={product.name}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-900 truncate">{product.name}</h3>
+                <p className="mt-2 text-gray-700">{product.description?.substring(0, 60)}...</p>
+                <p className="mt-4 text-blue-600 font-bold">{product.price.toLocaleString()} تومان</p>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
