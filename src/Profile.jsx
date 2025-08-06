@@ -30,7 +30,7 @@ export default function Profile() {
     <div className="max-w-md mx-auto p-6 mt-10 bg-white shadow-lg rounded-lg">
       <h1 className="text-2xl font-bold mb-4 text-center">پروفایل کاربر</h1>
       <p className="text-center text-gray-700 mb-6">ایمیل: <strong>{email} </strong></p>
-      <p className="text-center text-grey-700 mb-6> {tkn} </p>
+      <p className="text-center text-grey-700 mb-6"> {tkn} </p>
       <button
         onClick={handleLogout}
         className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
