@@ -7,6 +7,7 @@ import Footer from './Footer';
 import ProductDetails from "./ProductDetails";
 import ProductFilter from "./ProductFilter";
 import { CartProvider } from './CartContext';
+import Cart from './Cart';
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/random" element={<Random />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+           <Route path="/cart" element={<Cart />} />
         <Route path="/productfilter" element={<ProductFilter />} />
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
