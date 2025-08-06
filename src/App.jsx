@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Random from './Random';
 import ProductList from './ProductList';
 import Footer from './Footer';
+import ProductDetails from "./ProductDetails";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/random" element={<Random />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
        </main>
         <Footer />
