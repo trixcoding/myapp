@@ -22,7 +22,7 @@ export default function ProductList() {
 
   return (
     <div className="max-w-7xl mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-       <Link to="/product/1">محصول</Link>
+
       {products.map(product => (
         <div key={product.id} className="border rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
  
