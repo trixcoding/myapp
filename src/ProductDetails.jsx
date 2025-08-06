@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { CartContext } from './CartContext';
+
 export default function ProductDetails() {
-const { addToCart } = useContext(CartContext);
- const { id } = useParams(); // گرفتن id از URL
+  const { addToCart } = useContext(CartContext);
+  const { id } = useParams(); // گرفتن id از URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -30,12 +31,12 @@ const { addToCart } = useContext(CartContext);
       <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
       <p className="text-gray-700 mb-4">{product.description}</p>
       <p className="text-xl font-semibold text-green-600 mb-2">{product.price} تومان</p>
-        <button
-              onClick={() => addToCart(product)}
-              className="mt-3 bg-blue-600 text-white rounded py-2 hover:bg-blue-700"
-            >
-              افزودن به سبد خرید
-            </button>
+      <button
+        onClick={() => addToCart(product)}
+        className="mt-3 bg-blue-600 text-white rounded py-2 hover:bg-blue-700"
+      >
+        افزودن به سبد خرید
+      </button>
     </div>
   );
 }
