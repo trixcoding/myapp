@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './SignUp';
 import Login from './Login';
 import Profile from './Profile';
-import ProductList from './ProductList'; // اگه داری
+import ShopProducts from './ShopProducts'; // اگه داری
 
 function App() {
   return (
