@@ -54,9 +54,9 @@ export default function ProductFilter() {
                 alt={product.name}
                 className="w-full h-48 object-cover"
               />
-              <div className="p-4">
+              <div className="p-4 text-right">
                 <h3 className="text-lg font-semibold text-gray-900 truncate">{product.name}</h3>
-                <p className="mt-2 text-gray-700 line-clamp-2">{product.description?.substring(0, 60)}...</p>
+                <p className="mt-2 text-gray-700 line-clamp-2 text-right">{product.description?.substring(0, 60)}...</p>
                 <p className="mt-4 text-blue-600 font-bold">{product.price.toLocaleString()} تومان</p>
                  <Link to={`/product/${product.id}`}>
 
