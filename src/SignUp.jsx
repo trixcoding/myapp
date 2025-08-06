@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from 'react-router-dom';
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,6 +52,12 @@ function SignUp() {
         </button>
 
         {msg && <p className="text-center text-sm text-green-600 mt-2">{msg}</p>}
+        <div className="text-center mt-4">
+  <span>حساب کاربری داری؟ </span>
+  <Link to="/" className="text-blue-600 hover:underline">
+    وارد شو
+  </Link>
+</div>
       </form>
     </div>
   );
