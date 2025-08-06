@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // برای ریدایرکت
-
+import { Link } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -75,6 +75,12 @@ export default function Login() {
         >
           ورود
         </button>
+        <div className="text-center mt-4">
+  <span>حساب کاربری نداری؟ </span>
+  <Link to="/signup" className="text-blue-600 hover:underline">
+    ثبت‌نام کن
+  </Link>
+</div>
       </form>
     </div>
   );
