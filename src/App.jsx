@@ -14,8 +14,7 @@ function App() {
         <Route path="/random" element={<Random />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-    </BrowserRouter>
-       
+
       <ToastContainer 
         position="top-center" 
         autoClose={3000} 
@@ -24,6 +23,9 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+    </BrowserRouter>
+       
+      
  
   );
 }
