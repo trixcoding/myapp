@@ -5,7 +5,7 @@ export default function Random() {
 
   const fetchRandomString = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/random');
+      const res = await fetch('http://202.133.88.146:3001/api/random');
       const data = await res.json();
       setRandomString(data.randomString);
     } catch (error) {
