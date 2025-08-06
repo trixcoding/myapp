@@ -1,40 +1,44 @@
-// src/App.jsx
 import { useEffect, useState } from "react";
 
 function App() {
   const [products, setProducts] = useState([]);
 
-  // گرفتن محصولات از سرور Node
   useEffect(() => {
     fetch("http://202.133.88.146:5000/api/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("❌ خطا در گرفتن داده‌ها:", err));
+      .then((data) => setProducts(data));
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
-        فروشگاه محصولات
+    <div className="min-h-screen bg-white px-6 py-10 font-sans">
+      <h1 className="text-4xl font-extrabold text-gray-900 text-center tracking-tight mb-12">
+        فروشگاه لاکچری
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-white shadow-lg rounded-lg p-4 hover:shadow-xl transition-shadow duration-300"
+            className="group relative border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
           >
             {/* تصویر فرضی */}
-            <div className="h-40 bg-gray-200 rounded mb-4 flex items-center justify-center">
-              <span className="text-gray-400">تصویر محصول</span>
+            <div className="aspect-w-1 aspect-h-1 bg-gray-100">
+              <img
+                src={`https://source.unsplash.com/400x400/?fashion,clothes&sig=${product.id}`}
+                alt={product.name}
+                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
 
-            <h2 className="text-lg font-semibold text-gray-700 mb-2">{product.name}</h2>
-            <p className="text-gray-600 mb-4">قیمت: {product.price.toLocaleString()} تومان</p>
-
-            <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">
-              افزودن به سبد خرید
-            </button>
+            <div className="p-5">
+              <h2 className="text-lg font-semibold text-gray-800 mb-1">{product.name}</h2>
+              <p className="text-gray-500 text-sm mb-3">
+                قیمت: {product.price.toLocaleString()} تومان
+              </p>
+              <button className="mt-2 w-full bg-black text-white text-sm py-2 rounded hover:bg-gray-800 transition-all tracking-wider">
+                افزودن به سبد خرید
+              </button>
+            </div>
           </div>
         ))}
       </div>
