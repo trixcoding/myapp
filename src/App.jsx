@@ -13,7 +13,7 @@ function App() {
           <div className="min-h-screen flex flex-col justify-between">
           <main className="flex-grow">
       <Routes>
-        <Route path="/" element={<ProductList />} />
+        <Route path="/" element={<ProductFilter />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/random" element={<Random />} />
         <Route path="/login" element={<Login />} />
