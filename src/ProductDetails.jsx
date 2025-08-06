@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CartContext } from './CartContext';
- const { addToCart } = useContext(CartContext);
 export default function ProductDetails() {
-  const { id } = useParams(); // گرفتن id از URL
+const { addToCart } = useContext(CartContext);
+ const { id } = useParams(); // گرفتن id از URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
