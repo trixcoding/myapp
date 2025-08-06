@@ -3,13 +3,15 @@ import SignUp from './SignUp';
 import Login from './Login';
 import Profile from './Profile';
 import Random from './Random';
-import ProductList from './ProductList';
 import Footer from './Footer';
 import ProductDetails from "./ProductDetails";
 import ProductFilter from "./ProductFilter";
+import { CartProvider } from './CartContext';
 function App() {
   return (
     <BrowserRouter>
+       <CartProvider>
+    
           <div className="min-h-screen flex flex-col justify-between">
           <main className="flex-grow">
       <Routes>
@@ -24,6 +26,7 @@ function App() {
        </main>
         <Footer />
       </div>
+          </CartProvider>
     </BrowserRouter>
        
       
