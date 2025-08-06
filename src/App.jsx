@@ -24,7 +24,7 @@ function App() {
             {/* تصویر فرضی */}
             <div className="aspect-w-1 aspect-h-1 bg-gray-100">
               <img
-                src={`https://source.unsplash.com/400x400/?fashion,clothes&sig=${product.id}`}
+                src={`https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg`}
                 alt={product.name}
                 className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
               />
