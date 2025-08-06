@@ -18,7 +18,7 @@ export default function ProductFilter() {
     : products.filter(product => product.category === selectedCategory);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-4 py-8  text-right">
       <h2 className="text-3xl font-extrabold text-gray-900 mb-6 text-center">
         دسته‌بندی محصولات
       </h2>
