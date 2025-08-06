@@ -24,7 +24,7 @@ function App() {
             {/* تصویر فرضی */}
             <div className="aspect-w-1 aspect-h-1 bg-gray-100">
               <img
-                src={`https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg`}
+                src={`https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png`}
                 alt={product.name}
                 className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
               />
