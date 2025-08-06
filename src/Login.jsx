@@ -39,7 +39,7 @@ export default function Login() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-10">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <h2 className="text-2xl font-bold mb-6 text-center">ورود به حساب کاربری</h2>
 
       {message && (
