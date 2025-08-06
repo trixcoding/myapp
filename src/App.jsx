@@ -4,7 +4,7 @@ import Login from './Login';
 import Profile from './Profile';
 import Random from './Random';
 import ProductList from './ProductList';
-import Footer from '/.Footer';
+import Footer from './Footer';
 function App() {
   return (
     <BrowserRouter>
