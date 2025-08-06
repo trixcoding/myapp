@@ -58,6 +58,11 @@ export default function ProductFilter() {
                 <h3 className="text-lg font-semibold text-gray-900 truncate">{product.name}</h3>
                 <p className="mt-2 text-gray-700">{product.description?.substring(0, 60)}...</p>
                 <p className="mt-4 text-blue-600 font-bold">{product.price.toLocaleString()} تومان</p>
+                 <Link to={`/product/${product.id}`}>
+
+            <button className="w-full text-center mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition mt-4">
+            ادامه - خرید
+          </button>
               </div>
             </div>
           ))
