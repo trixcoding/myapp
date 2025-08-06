@@ -36,7 +36,7 @@ export default function ProductList() {
           <p className="text-gray-700 font-bold text-xl">{product.price.toLocaleString()} تومان</p>
          <Link to={`/product/${product.id}`}>
 
-            <button className="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition mt-4">
+            <button className="w-full text-center mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition mt-4">
             خرید
           </button>
            </Link>
