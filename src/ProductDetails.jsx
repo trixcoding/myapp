@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { CartContext } from './CartContext';
+export default function ProductsList({ products }) {
+  const { addToCart } = useContext(CartContext);
 export default function ProductDetails() {
   const { id } = useParams(); // گرفتن id از URL
   const [product, setProduct] = useState(null);
@@ -29,6 +31,12 @@ export default function ProductDetails() {
       <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
       <p className="text-gray-700 mb-4">{product.description}</p>
       <p className="text-xl font-semibold text-green-600 mb-2">{product.price} تومان</p>
+        <button
+              onClick={() => addToCart(product)}
+              className="mt-3 bg-blue-600 text-white rounded py-2 hover:bg-blue-700"
+            >
+              افزودن به سبد خرید
+            </button>
     </div>
   );
 }
