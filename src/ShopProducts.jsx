@@ -4,7 +4,7 @@ export default function ShopProducts() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://202.133.88.146:5000/api/products")
+    fetch("http://202.133.88.146:3001/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
