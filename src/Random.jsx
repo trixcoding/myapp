@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 
 export default function RandomString() {
-  const [randomString, setRandomString] = useState('');
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const colors = [
+    'text-red-500',
+    'text-blue-500',
+    'text-green-500',
+    'text-yellow-500',
+    'text-purple-500',
+    'text-pink-500',
+    'text-indigo-500',
+    'text-emerald-500',
+  ];
 
   const fetchRandomString = async () => {
     try {
@@ -20,19 +31,31 @@ export default function RandomString() {
 
   const animateTyping = (text) => {
     let index = 0;
+    let result = '';
     const interval = setInterval(() => {
-      setDisplayedText((prev) => prev + text[index]);
+      result += text[index];
+      setDisplayedText(result);
       index++;
       if (index === text.length) {
         clearInterval(interval);
         setIsTyping(false);
       }
-    }, 20); // سرعت تایپ (هر 20ms یک کاراکتر)
+    }, 20);
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(displayedText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Error copying text:', err);
+    }
   };
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow text-center">
-      <h2 className="text-2xl font-bold mb-4">دریافت رشته رندوم</h2>
+      <h2 className="text-2xl font-bold mb-4">🎲 دریافت رشته رندوم با استایل</h2>
 
       <button
         onClick={fetchRandomString}
@@ -43,9 +66,21 @@ export default function RandomString() {
       </button>
 
       {displayedText && (
-        <div className="mt-6 bg-gray-100 p-4 rounded break-words text-left font-mono text-sm transition-all duration-700">
-          {displayedText}
+        <div
+          className="mt-6 bg-gray-100 p-4 rounded break-words text-left font-mono text-sm cursor-pointer select-all border border-dashed border-gray-400 hover:shadow transition"
+          onClick={handleCopy}
+          title="برای کپی کلیک کنید"
+        >
+          {displayedText.split('').map((char, idx) => (
+            <span key={idx} className={`${colors[Math.floor(Math.random() * colors.length)]}`}>
+              {char}
+            </span>
+          ))}
         </div>
+      )}
+
+      {copied && (
+        <p className="text-green-600 mt-2 font-semibold animate-pulse">✅ کپی شد!</p>
       )}
     </div>
   );
