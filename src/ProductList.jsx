@@ -32,11 +32,11 @@ export default function ProductList() {
           />
           <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
           <p className="text-gray-700 font-bold text-xl">{product.price.toLocaleString()} تومان</p>
-         <Link to={`/product/${product.id}`}>
+         
             <button className="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition mt-4">
             خرید
           </button>
-           </Link>
+           
         </div>
       ))}
     </div>
