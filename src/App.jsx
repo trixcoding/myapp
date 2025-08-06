@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/random" element={Random />} />
+        <Route path="/random" element={<Random />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
