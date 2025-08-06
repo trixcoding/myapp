@@ -24,7 +24,9 @@ export default function ProductDetails() {
   if (loading) return <p className="text-center mt-10">در حال بارگذاری...</p>;
 
   if (!product) return <p className="text-center mt-10">محصولی یافت نشد</p>;
-
+function Smsg(){
+return alert("افزوده شد");
+}
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <img src={product.image} alt={product.name} className="w-full max-h-96 object-contain mb-6" />
@@ -32,7 +34,10 @@ export default function ProductDetails() {
       <p className="text-gray-700 mb-4">{product.description}</p>
       <p className="text-xl font-semibold text-green-600 mb-2">{product.price} تومان</p>
       <button
-        onClick={() => addToCart(product)}
+        onClick={() => { 
+          addToCart(product);
+          Smsg();
+        };
         className="mt-3 bg-blue-600 text-white rounded py-2 hover:bg-blue-700"
       >
         افزودن به سبد خرید
