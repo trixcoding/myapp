@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { QRCode } from 'qrcode.react'; // ایمپورت QR Code
 
-export default function RandomString() {
+export default function Random() {
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [copied, setCopied] = useState(false);
