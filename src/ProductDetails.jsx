@@ -37,7 +37,7 @@ return alert("افزوده شد");
         onClick={() => { 
           addToCart(product);
           Smsg();
-        };
+        }}
         className="mt-3 bg-blue-600 text-white rounded py-2 hover:bg-blue-700"
       >
         افزودن به سبد خرید
