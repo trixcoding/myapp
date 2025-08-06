@@ -63,6 +63,7 @@ export default function ProductFilter() {
             <button className="w-full text-center mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition mt-4">
             ادامه - خرید
           </button>
+                 </Link>
               </div>
             </div>
           ))
