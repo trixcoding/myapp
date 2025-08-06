@@ -1,8 +1,8 @@
-import ShopProducts from "./ShopProducts"
+import SignUp from "./SignUp"
 function App() {
   return (
     <div>
-    <ShopProducts />
+    <SignUp />
     </div>
 
     );
