@@ -13,6 +13,7 @@ export default function Footer() {
           <Link to="/" className="hover:text-gray-400 transition">محصولات</Link>
           <Link to="/random" className="hover:text-gray-400 transition">ساخت پسورد</Link>
           <Link to="/login" className="hover:text-gray-400 transition">ورود</Link>
+          <Link to={`/product/1'`}>محصول ۱</Link>
           <Link to="/signup" className="hover:text-gray-400 transition">ثبت‌نام</Link>
         </div>
       </div>
