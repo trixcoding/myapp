@@ -13,26 +13,39 @@ export default function Cart() {
 
   // ⬇ تابع ثبت سفارش داخل کامپوننت
   const submitOrder = async () => {
-    try {
-      const response = await fetch('http://202.133.88.146:3001/api/orders/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ cartItems, totalPrice }),
-      });
+  const userEmail = localStorage.getItem('userEmail');
 
-      const data = await response.json();
-      if (response.ok) {
-        alert('سفارش ثبت شد. شماره سفارش: ' + data.orderId);
-        navigate('/'); // بازگشت به صفحه اصلی بعد از ثبت سفارش
-      } else {
-        alert('خطا: ' + data.error);
-      }
-    } catch (err) {
-      console.error('خطای ارسال سفارش:', err);
+  // اگه لاگین نکرده بود
+  if (!userEmail) {
+    alert('لطفاً ابتدا وارد حساب کاربری خود شوید.');
+    return;
+  }
+
+  try {
+    const response = await fetch('http://202.133.88.146:3001/api/orders/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cartItems,
+        totalPrice,
+        email: userEmail,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert('✅ سفارش با موفقیت ثبت شد!');
+    } else {
+      alert(`❌ خطا در ثبت سفارش: ${data.error || 'خطای ناشناخته'}`);
     }
-  };
+  } catch (error) {
+    console.error('خطا در ارسال سفارش:', error);
+    alert('❌ خطا در ارتباط با سرور');
+  }
+};
 const handlePayment = async () => {
   try {
     const response = await fetch('http://202.133.88.146:3001/api/payment', {
