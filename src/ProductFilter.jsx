@@ -31,7 +31,7 @@ export default function ProductFilter() {
                bg-gradient-to-r from-white via-gray-50 to-gray-100 border border-gray-300 
                shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 
                focus:border-transparent transition duration-300 ease-in-out 
-               hover:shadow-xl cursor-pointer font-vazir"
+               hover:shadow-xl cursor-pointer font-vazir text-right"
   >
     <option value="all">🛍️ همه محصولات</option>
     <option value="shoes">👟 کفش</option>
