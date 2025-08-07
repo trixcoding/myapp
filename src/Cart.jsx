@@ -13,7 +13,7 @@ export default function Cart() {
 
   // ⬇ تابع ثبت سفارش داخل کامپوننت
   const submitOrder = async () => {
-  const userEmail = localStorage.getItem('userEmail');
+  const userEmail = localStorage.getItem('email');
 
   // اگه لاگین نکرده بود
   if (!userEmail) {
