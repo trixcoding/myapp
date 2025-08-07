@@ -25,6 +25,7 @@ export default function ProductFilter() {
 
      <div className="flex justify-center mb-12 px-4 text-right">
   <select
+    dir = "rtl"
     value={selectedCategory}
     onChange={(e) => setSelectedCategory(e.target.value)}
     className="w-full max-w-sm appearance-none rounded-xl px-5 py-3 text-gray-800 text-base md:text-lg font-medium 
