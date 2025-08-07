@@ -33,7 +33,25 @@ export default function Cart() {
       console.error('خطای ارسال سفارش:', err);
     }
   };
+const handlePayment = async () => {
+  try {
+    const response = await fetch('http://202.133.88.146:3001/api/payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: totalPrice, cartItems }),
+    });
 
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url; // رفتن به درگاه زرین‌پال
+    } else {
+      alert('خطا در دریافت لینک پرداخت');
+    }
+  } catch (err) {
+    console.error('خطا در پرداخت:', err);
+    alert('خطای سرور در پرداخت');
+  }
+};
   return (
     <div className="w-full md:w-1/3 p-4 border-t md:border-t-0 md:border-l border-gray-300">
       <h2 className="text-xl font-bold mb-4">سبد خرید</h2>
@@ -76,6 +94,13 @@ export default function Cart() {
           >
             ثبت سفارش
           </button>
+
+          <button
+  onClick={handlePayment}
+  className="mt-3 bg-yellow-500 text-white rounded py-2 px-4 hover:bg-yellow-600"
+>
+  پرداخت آنلاین با زرین‌پال
+</button>
         </>
       )}
     </div>
