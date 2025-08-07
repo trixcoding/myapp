@@ -3,7 +3,7 @@ import { CartContext } from './CartContext';
 import { useNavigate } from 'react-router-dom'; // برای ریدایرکت بعد از سفارش
 const submitOrder = async () => {
   try {
-    const response = await fetch('http://localhost:3001/api/orders/submit', {
+    const response = await fetch('http://202.133.88.146:3001/api/orders/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
