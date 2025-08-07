@@ -27,6 +27,7 @@ export default function MyOrders() {
         orders.map(order => (
           <div key={order.id} className="border p-4 mb-4 rounded shadow">
             <p><strong>شماره سفارش:</strong> {order.id}</p>
+            <p><strong>تاریخ ثبت سفارش:</strong> {new Date(order.created_at).toLocaleString('fa-IR')}</p>
             <p><strong>مبلغ:</strong> {order.totalPrice} تومان</p>
             <p><strong>اقلام:</strong></p>
             <ul className="list-disc mr-5 mt-2">
