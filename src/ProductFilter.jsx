@@ -33,7 +33,7 @@ export default function ProductFilter() {
                focus:border-transparent transition duration-300 ease-in-out 
                hover:shadow-xl cursor-pointer font-vazir text-right"
   >
-    <option value="all">🛍️ همه محصولات</option>
+    <option className = "text-right" value="all">🛍️ همه محصولات</option>
     <option value="shoes">👟 کفش</option>
     <option value="tshirts">👕 تیشرت</option>
     <option value="pants">👖 شلوار</option>
