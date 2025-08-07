@@ -1,6 +1,26 @@
 import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
+import { useNavigate } from 'react-router-dom'; // برای ریدایرکت بعد از سفارش
+const navigate = useNavigate();
+const handleSubmitOrder = async () => {
+  const res = await fetch('http://202.133.88.146:3001/api/orders/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      cartItems,
+      totalPrice,
+    }),
+  });
 
+  const data = await res.json();
+  if (res.ok) {
+    alert(`✅ سفارش شما با موفقیت ثبت شد. کد سفارش: ${data.orderId}`);
+    localStorage.removeItem('cart'); // پاک کردن سبد خرید
+    window.location.reload(); // یا navigate('/'); برای بازگشت به صفحه اصلی
+  } else {
+    alert('❌ خطا در ثبت سفارش: ' + data.error);
+  }
+};
 export default function Cart() {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
 
@@ -45,6 +65,12 @@ export default function Cart() {
             </div>
           ))}
           <div className="mt-6 font-bold text-lg">مجموع: {totalPrice} تومان</div>
+          <button
+  onClick={handleSubmitOrder}
+  className="mt-6 bg-green-600 text-white rounded py-2 px-4 hover:bg-green-700"
+>
+  ثبت سفارش
+</button>
         </>
       )}
     </div>
