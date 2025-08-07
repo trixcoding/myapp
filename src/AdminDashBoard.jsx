@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const AdminDashboard = () => {
+const AdminDashBoard = () => {
   const [stats, setStats] = useState({ ordersCount: 0, totalSales: 0, usersCount: 0 });
   const [loading, setLoading] = useState(true);
 
@@ -33,4 +33,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default AdminDashBoard;
