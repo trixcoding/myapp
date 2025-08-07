@@ -14,10 +14,17 @@ export default function Cart() {
   // ⬇ تابع ثبت سفارش داخل کامپوننت
   const submitOrder = async () => {
   const userEmail = localStorage.getItem('email');
+  const token = localStorage.getItem('token'); // توکن JWT از localStorage
 
-  // اگه لاگین نکرده بود
-  if (!userEmail) {
-    alert('لطفاً ابتدا وارد حساب کاربری خود شوید.');
+  // بررسی ورود کاربر
+  if (!userEmail || !token) {
+    alert('❗ لطفاً ابتدا وارد حساب کاربری خود شوید.');
+    return;
+  }
+
+  // بررسی خالی نبودن سبد خرید
+  if (cartItems.length === 0) {
+    alert('❗ سبد خرید شما خالی است.');
     return;
   }
 
@@ -26,23 +33,28 @@ export default function Cart() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // ارسال توکن در هدر
       },
       body: JSON.stringify({
         cartItems,
         totalPrice,
-        email: userEmail,
+        email: userEmail
       }),
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      alert('✅ سفارش با موفقیت ثبت شد!');
+      alert(`✅ سفارش با موفقیت ثبت شد!`);
+      // (اختیاری) پاک‌سازی سبد خرید:
+      // clearCart();
+      // (اختیاری) انتقال به صفحه سفارش‌ها:
+      // navigate('/my-orders');
     } else {
       alert(`❌ خطا در ثبت سفارش: ${data.error || 'خطای ناشناخته'}`);
     }
   } catch (error) {
-    console.error('خطا در ارسال سفارش:', error);
+    console.error('❌ خطا در ارسال سفارش:', error);
     alert('❌ خطا در ارتباط با سرور');
   }
 };
