@@ -9,6 +9,7 @@ import ProductFilter from "./ProductFilter";
 import { CartProvider } from './CartContext';
 import Cart from './Cart';
 import MyOrders from './MyOrders';
+import AdminDashBoard from './AdminDashBoard';
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/myorders" element={<MyOrders />} />
+        <Route path="/admin" element={<AdminDashBoard />} />
         <Route path="/productfilter" element={<ProductFilter />} />
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
