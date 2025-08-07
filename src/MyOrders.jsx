@@ -27,8 +27,21 @@ export default function MyOrders() {
         orders.map(order => (
           <div key={order.id} className="border p-4 mb-4 rounded shadow">
             <p><strong>شماره سفارش:</strong> {order.id}</p>
-            <p><strong>تاریخ ثبت سفارش:</strong> {new Date(order.createdAt).toLocaleDateString('fa-IR')}</p>
-            <p><strong>مبلغ:</strong> {order.totalPrice} تومان</p>
+            <p>
+  <strong>تاریخ ثبت سفارش:</strong>{' '}
+  {new Date(order.createdAt).toLocaleDateString('fa-IR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })}{' '}
+  ساعت{' '}
+  {new Date(order.createdAt).toLocaleTimeString('fa-IR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  })}
+</p> <p><strong>مبلغ:</strong> {order.totalPrice} تومان</p>
             <p><strong>اقلام:</strong></p>
             <ul className="list-disc mr-5 mt-2">
               {JSON.parse(order.items).map((item, idx) => (
