@@ -23,20 +23,24 @@ export default function ProductFilter() {
         دسته‌بندی محصولات
       </h2>
 
-      <div className="flex justify-center mb-8">
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          className="border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-        >
-          <option value="all">همه محصولات</option>
-          <option value="shoes">کفش</option>
-          <option value="tshirts">تیشرت</option>
-          <option value="pants">شلوار</option>
-          <option value="glasses">عینک</option>
-          <option value="hats">کلاه</option>
-        </select>
-      </div>
+     <div className="flex justify-center mb-12 px-4">
+  <select
+    value={selectedCategory}
+    onChange={(e) => setSelectedCategory(e.target.value)}
+    className="w-full max-w-sm appearance-none rounded-xl px-5 py-3 text-gray-800 text-base md:text-lg font-medium 
+               bg-gradient-to-r from-white via-gray-50 to-gray-100 border border-gray-300 
+               shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 
+               focus:border-transparent transition duration-300 ease-in-out 
+               hover:shadow-xl cursor-pointer font-vazir"
+  >
+    <option value="all">🛍️ همه محصولات</option>
+    <option value="shoes">👟 کفش</option>
+    <option value="tshirts">👕 تیشرت</option>
+    <option value="pants">👖 شلوار</option>
+    <option value="glasses">🕶️ عینک</option>
+    <option value="hats">🧢 کلاه</option>
+  </select>
+</div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.length === 0 ? (
