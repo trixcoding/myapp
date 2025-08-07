@@ -1,33 +1,38 @@
 import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
-import { useNavigate } from 'react-router-dom'; // برای ریدایرکت بعد از سفارش
-const submitOrder = async () => {
-  try {
-    const response = await fetch('http://202.133.88.146:3001/api/orders/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ cartItems, totalPrice }),
-    });
+import { useNavigate } from 'react-router-dom';
 
-    const data = await response.json();
-    if (response.ok) {
-      alert('سفارش ثبت شد. شماره سفارش: ' + data.orderId);
-    } else {
-      alert('خطا: ' + data.error);
-    }
-  } catch (err) {
-    console.error('خطای ارسال سفارش:', err);
-  }
-};
 export default function Cart() {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
+
+  // ⬇ تابع ثبت سفارش داخل کامپوننت
+  const submitOrder = async () => {
+    try {
+      const response = await fetch('http://202.133.88.146:3001/api/orders/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cartItems, totalPrice }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('سفارش ثبت شد. شماره سفارش: ' + data.orderId);
+        navigate('/'); // بازگشت به صفحه اصلی بعد از ثبت سفارش
+      } else {
+        alert('خطا: ' + data.error);
+      }
+    } catch (err) {
+      console.error('خطای ارسال سفارش:', err);
+    }
+  };
 
   return (
     <div className="w-full md:w-1/3 p-4 border-t md:border-t-0 md:border-l border-gray-300">
@@ -66,11 +71,11 @@ export default function Cart() {
           ))}
           <div className="mt-6 font-bold text-lg">مجموع: {totalPrice} تومان</div>
           <button
-  onClick={submitOrder}
-  className="mt-6 bg-green-600 text-white rounded py-2 px-4 hover:bg-green-700"
->
-  ثبت سفارش
-</button>
+            onClick={submitOrder}
+            className="mt-6 bg-green-600 text-white rounded py-2 px-4 hover:bg-green-700"
+          >
+            ثبت سفارش
+          </button>
         </>
       )}
     </div>
