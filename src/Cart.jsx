@@ -66,7 +66,7 @@ export default function Cart() {
           ))}
           <div className="mt-6 font-bold text-lg">مجموع: {totalPrice} تومان</div>
           <button
-  onClick={SubmitOrder}
+  onClick={submitOrder}
   className="mt-6 bg-green-600 text-white rounded py-2 px-4 hover:bg-green-700"
 >
   ثبت سفارش
