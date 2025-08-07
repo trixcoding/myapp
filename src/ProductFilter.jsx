@@ -23,7 +23,7 @@ export default function ProductFilter() {
         دسته‌بندی محصولات
       </h2>
 
-     <div className="flex justify-center mb-12 px-4">
+     <div className="flex justify-center mb-12 px-4 text-right">
   <select
     value={selectedCategory}
     onChange={(e) => setSelectedCategory(e.target.value)}
